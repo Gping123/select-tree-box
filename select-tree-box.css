@@ -1,0 +1,108 @@
+/* */
+
+/* 组件变量定义 */
+.select-tree-box * {
+    --box-height: 28px;
+    --icon-border-size: 10px;
+    --theme-color: rgb(60, 140, 188);
+}
+
+/* 组件选择器样式 */
+.select-tree-box {
+    min-height: var(--box-height);
+    height: 100%;
+    cursor: pointer;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+/* 选择器内容样式 */
+.select-tree-box .select-tree-box-container {
+    position: relative;
+    height: 100%;
+    border: 1px solid var(--theme-color);
+    border-radius: 5px;
+}
+
+/* 选择器部分样式 */
+.select-tree-box .select-tree-box-selector {
+    display: flex;
+    height: 100%;
+    padding: 0px 3px;
+    align-items: center;
+    font-weight: 600;
+}
+
+/* 已选标签列表样式 */
+.select-tree-box .select-tree-box-selector .select-tree-box-labels{
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.select-tree-box .select-tree-box-selector .select-tree-box-labels .select-tree-box-label{
+    display: block;
+    font-size: 12px;
+    padding: 3px 5px;
+    background-color: rgb(222, 222, 222);
+    color: #111111;
+    border-radius: 5px;
+}
+.select-tree-box .select-tree-box-selector .select-tree-box-labels .select-tree-box-close{
+    color: #ffffff;
+    margin-left: 1em;
+    margin-right: .5em;
+}
+
+.select-tree-box .select-tree-box-selector .selected-number{
+    display: block;
+    background-color: rgb(222, 222, 222);
+    cursor: pointer;
+    padding: 3px 5px;
+    font-size: 12px;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    border-radius: 5px;
+    
+}
+/* 上下图标样式 */
+.select-tree-box .select-tree-box-selector .ico{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 选择框组件样式 */
+.select-tree-box .select-tree-box-treebox{
+    position: absolute;
+    min-width: 300px;
+    top: 0px;
+    margin-top: var(--box-height);
+    border: 1px solid #ccc;
+}
+
+/* 箭头样式 */
+.ico_up,
+.ico_down {
+    display: block;
+    width: 0;
+    height: 0;
+    border: var(--icon-border-size) solid transparent;
+    margin: 0px 5px;
+    transition: .5s;
+}
+.ico_up{
+    margin-bottom: var(--icon-border-size) !important;
+    border-bottom-color: var(--theme-color);
+}
+.ico_down{
+    margin-top: var(--icon-border-size) !important;
+    border-top-color: var(--theme-color);
+}
+
+
