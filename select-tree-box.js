@@ -15,7 +15,7 @@ class SelectTreeBox {
     /**
      * 选择器
      */
-    selector = '';
+    // selector = '';
 
     /**
      * TreeBox对象
@@ -73,6 +73,7 @@ class SelectTreeBox {
         };
 
         // 构建TreeBox对象
+        console.log(selector + ' .' + this._TreeBoxClass)
         this.treebox = new TreeBox(selector + ' .' + this._TreeBoxClass, data, selected, dataType, titleName, pkName, false, false, callFunc);
 
         // 监听事件
@@ -115,7 +116,7 @@ class SelectTreeBox {
      *     点击显示，超出点击隐藏
      */
     listenClickEvent() {
-        const oldThis = this;
+        let oldThis = this;
         
         // 显示
         $(oldThis.selector).on('click', function(e) {
@@ -177,7 +178,7 @@ class SelectTreeBox {
      * 监听关闭标签事件
      */
     listenCloseLableEvent() {
-        const oldThis = this;
+        let oldThis = this;
         $(this.selector + ' .select-tree-box-close').on('click', function (e) {
 
             let pk = $(this).attr('value');
