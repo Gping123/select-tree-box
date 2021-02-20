@@ -1,6 +1,6 @@
 /**
  * 下拉框组件
- * 
+ *
  * @requires Jquery.js
  * @requires TreeBox2.js
  * @file "SelectTreeBox.css"
@@ -15,7 +15,7 @@ class SelectTreeBox {
     /**
      * 选择器
      */
-    // selector = '';
+    selector = '';
 
     /**
      * TreeBox对象
@@ -45,13 +45,13 @@ class SelectTreeBox {
 
     /**
      * 构造方法
-     * 
-     * @param {String} selector 选择器【定位到节点】
-     * @param {Array} data 数据
-     * @param {Array} selected 默认选择
-     * @param {String} dataType parent_id|children
-     * @param {String} titleName 显示的title
-     * @param {String} pkName 主键
+     *
+     * @param {String} selector
+     * @param {Array} data
+     * @param {Array} selected
+     * @param {String} dataType
+     * @param {String} titleName
+     * @param {String} pkName
      */
     constructor(selector, data, selected = [], dataType = 'parent_id', titleName = 'name', pkName = 'id') {
 
@@ -73,7 +73,6 @@ class SelectTreeBox {
         };
 
         // 构建TreeBox对象
-        console.log(selector + ' .' + this._TreeBoxClass)
         this.treebox = new TreeBox(selector + ' .' + this._TreeBoxClass, data, selected, dataType, titleName, pkName, false, false, callFunc);
 
         // 监听事件
@@ -116,11 +115,12 @@ class SelectTreeBox {
      *     点击显示，超出点击隐藏
      */
     listenClickEvent() {
-        let oldThis = this;
-        
+        const oldThis = this;
+
         // 显示
         $(oldThis.selector).on('click', function(e) {
             let heigth = $(oldThis.selector).height();
+            $('.'+oldThis._TreeBoxClass).addClass('hide');
             $(oldThis.selector + ' .' + oldThis._ContainerClass + ' .' + oldThis._TreeBoxClass).removeClass('hide').css({
                 'margin-top': parseInt(heigth + 5) + 'px',
             });
@@ -132,15 +132,14 @@ class SelectTreeBox {
         $(document).on('click', function(e) {
             $(oldThis.selector + ' .' + oldThis._ContainerClass + ' .' + oldThis._TreeBoxClass).addClass('hide');
             $(oldThis.selector + ' .ico > span').removeClass('ico_up').addClass('ico_down');
-            e.stopPropagation();
         });
     }
 
     /**
      * 处理TreeBox2点击返回的事件
-     * 
-     * @param {Object} val 
-     * @param {Set} seled 
+     *
+     * @param {Object} val
+     * @param {Set} seled
      */
     selectedEventHandle(val, seled, that) {
 
@@ -153,7 +152,7 @@ class SelectTreeBox {
             $(_selector).html('');
             return ;
         }
-        
+
         seled = Array.from(seled);
         let seledNum = seled.length;
 
@@ -166,7 +165,7 @@ class SelectTreeBox {
             ${title} <span class="select-tree-box-close" value="${key}" title="关闭">X</span>
         </span>
         `;
-        
+
         $(that.selector + ' .selected-number-box').html('<span class="selected-number">' + seledNum + ' 已选</span>');
         $(_selector).html(html);
 
@@ -178,7 +177,7 @@ class SelectTreeBox {
      * 监听关闭标签事件
      */
     listenCloseLableEvent() {
-        let oldThis = this;
+        const oldThis = this;
         $(this.selector + ' .select-tree-box-close').on('click', function (e) {
 
             let pk = $(this).attr('value');
